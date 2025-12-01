@@ -351,7 +351,7 @@ public final class BindingSourceRestriction {
     @SuppressWarnings("unchecked") // force wildcard alignment
     Stream<Class<? extends Annotation>> permits =
         annotations
-            .map(Annotation::annotationType)
+            .<Class<? extends Annotation>>map(Annotation::annotationType)
             .filter(a -> a.isAnnotationPresent(RestrictedBindingSource.Permit.class));
     return permits;
   }
